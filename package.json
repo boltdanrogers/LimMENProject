@@ -1,0 +1,22 @@
+{
+  "name": "men",
+  "version": "1.0.0",
+  "description": "men stack project",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"test\":\"echo\\\"Error: no test specified\\\" &&e exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boltdanrogers/LimMENProject.git"
+  },
+  "author": "DJR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boltdanrogers/LimMENProject/issues"
+  },
+  "homepage": "https://github.com/boltdanrogers/LimMENProject#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
