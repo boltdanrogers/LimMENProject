@@ -1,30 +1,25 @@
-const http = require('http')
-//require is similar to import of include in other languages
-const fs = require('fs')
-const homePage = fs.readFileSync('index.html')
-const aboutPage = fs.readFileSync('about.html')
-const contactPage = fs.readFileSync('contact.html')
-const notFoundPage = fs.readFileSync('notFound.html')
+const express = require('express')//require express for server
+const path = require('path')//require path for getting specific path to files
+const app = new express()//create a new express server
+app.use(express.static('public'))//identify the public folder location for assets
 
+app.listen(4000,()=>{
+    console.log('App is listening on port 4000')
+})//end of app.listen call, setting port 4000 and writing a preliminary console message
 
+app.get('/',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'pages/index.html'))//respond with index.html
+})//end of get / url
 
-const server = http.createServer((req,res)=>{
-    console.log(req.url)
-    
-    if(req.url ==='/about')
-        res.end(aboutPage)
-    else if (req.url === '/contact')
-        res.end(contactPage)
-    else if(req.url == '/home')
-        res.end(homePage)
-    else{
-        res.writeHead(404)
-        res.end(notFoundPage)
-    }//end of else
-   
-   
-    
-   //res.end('Hello Node.js')
-})//end of arrow function
+app.get('/about',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'pages/about.html'))//respond with about.html
+})//end of get /about url
 
-server.listen(3000)
+app.get('/contact',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'pages/contact.html'))//respond with contact.html
+})//end of get /contact url
+
+app.get('/post',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'pages/post.html'))//respond with post.html
+})//end of get /post url
+
